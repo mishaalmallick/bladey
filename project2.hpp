@@ -92,7 +92,7 @@ public:
                         predict.timestamp = sellers[i].top().timestamp;
                         predict.timestamp2 = buyers[i].top().timestamp;
                         time_traveling[predict.stock_name].push_back(predict);
-
+                    }
                         if (sellers[i].top().shares > buyers[i].top().shares) {
                             Stock_Sold sold;
                             sold.net_transfer = sellers[i].top().dollars;
@@ -114,13 +114,14 @@ public:
                             sold.stock_got_sold = sellers[i].top().stock_name;
                             sold.who_bought = buyers[i].top().trader_name;
                             sold.seller = sellers[i].top().trader_name;
+                            output.push_back(sold);
                             buyers[i].pop();
                             sellers[i].pop();
                             trades_completed++;
                         }
                     }
                 }
-            }
+            
         }
     }
 
